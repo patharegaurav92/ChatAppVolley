@@ -81,7 +81,8 @@ public class Register extends AppCompatActivity {
                                     ref.child(useremail).child("password").setValue(userpass);
                                     ref.child(useremail).child("phone").setValue(phone.getText().toString());
                                     ref.child(useremail).child("name").setValue(username.getText().toString());
-                                    Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Register.this, "registration successful", Toast.LENGTH_SHORT).show();
+                                    finish();
                                 } else {
                                     Toast.makeText(Register.this, "username already exists", Toast.LENGTH_LONG).show();
                                 }

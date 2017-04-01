@@ -8,6 +8,6 @@ import com.firebase.client.Firebase;
 
 public class FireObjects {
 
-    static Firebase ref = new Firebase("https://chatappvolley.firebaseio.com/users");
-    static String url = "https://chatappvolley.firebaseio.com/users.json";
+    static Firebase ref = new Firebase("https://carpoolapp-2ec11.firebaseio.com/users");
+    static String url = "https://carpoolapp-2ec11.firebaseio.com/users.json";
 }

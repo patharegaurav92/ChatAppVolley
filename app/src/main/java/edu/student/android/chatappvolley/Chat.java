@@ -40,8 +40,8 @@ public class Chat extends AppCompatActivity {
         scrollView = (ScrollView) findViewById(R.id.scrollView);
         Firebase.setAndroidContext(this);
 
-        reference1 = new Firebase("https://chatappvolley.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith);
-        reference2 = new Firebase("https://chatappvolley.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username);
+        reference1 = new Firebase("https://carpoolapp-2ec11.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith);
+        reference2 = new Firebase("https://carpoolapp-2ec11.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +53,7 @@ public class Chat extends AppCompatActivity {
                     map.put("user", UserDetails.username);
                     reference1.push().setValue(map);
                     reference2.push().setValue(map);
+                    messageArea.setText("");
                 }
             }
         });

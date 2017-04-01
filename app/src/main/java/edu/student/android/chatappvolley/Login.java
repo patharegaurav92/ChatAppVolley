@@ -16,9 +16,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.firebase.client.Firebase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static edu.student.android.chatappvolley.FireObjects.url;
 
 public class Login extends AppCompatActivity {
     TextView register;
@@ -39,18 +42,19 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, Register.class));
             }
         });
+
+        Firebase.setAndroidContext(this);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 email = useremail.getText().toString();
                 pass = password.getText().toString();
 
-                String url="https://chatappvolley.firebaseio.com/users.json";
                 final ProgressDialog pd = new ProgressDialog(Login.this);
                 pd.setMessage("Loading...");
                 pd.show();
 
-                StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
+                StringRequest request = new StringRequest(Request.Method.GET, FireObjects.url, new Response.Listener<String>(){
                     @Override
                     public void onResponse(String s) {
                         if(s.equals("null")){
