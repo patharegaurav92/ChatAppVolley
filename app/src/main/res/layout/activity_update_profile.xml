@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.student.android.chatappvolley.UpdateProfile"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Update Profile"
+        android:textSize="30dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/newusername"
+        android:inputType="text"
+        android:maxLines="1"
+        android:hint="Enter New UserName"
+        android:layout_marginBottom="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/newpassword"
+        android:inputType="text"
+        android:maxLines="1"
+        android:hint="Enter New Password"
+        android:layout_marginBottom="10dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/new_phone_number"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:hint="Enter New Phone Number"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:id="@+id/registerButton"
+        android:layout_marginBottom="20dp"/>
+
+
+
+</LinearLayout>
