@@ -4,6 +4,15 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,21 +20,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
+        <activity android:name=".Login" android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home" />
-        <activity android:name=".Register" />
-        <activity android:name=".Users" />
-        <activity android:name=".Chat" />
-        <activity android:name=".UpdateProfile" />
+        <activity android:name=".Home" android:label="@string/title_activity_home" >
+
+        </activity>
+        <activity android:name=".Register" android:label="@string/title_activity_register" android:parentActivityName="edu.student.android.chatappvolley.Login" />
+        <activity android:name=".Users" android:label="@string/title_activity_users" android:parentActivityName="edu.student.android.chatappvolley.Home" />
+        <activity android:name=".Chat" android:label="@string/title_activity_chat" android:parentActivityName="edu.student.android.chatappvolley.Users"/>
+        <activity android:name=".UpdateProfile" android:label="@string/title_activity_edit_profile" android:parentActivityName="edu.student.android.chatappvolley.ViewProfile"/>
         <activity
             android:name=".ViewProfile"
-            android:label="@string/title_activity_view_profile"></activity>
+            android:label="@string/title_activity_view_profile" android:parentActivityName="edu.student.android.chatappvolley.Home"/>
+
+        <activity
+            android:name=".features.OwnACarpool"
+            android:label="@string/title_activity_own_a_carpool" android:parentActivityName="edu.student.android.chatappvolley.Home"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".features.ViewYourCarpool"
+            android:label="@string/title_activity_view_your_carpool" android:parentActivityName="edu.student.android.chatappvolley.Home"
+            ></activity>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,18 +33,21 @@ import static edu.student.android.chatappvolley.FireObjects.url;
 public class UpdateProfile  extends AppCompatActivity {
 
     EditText username, password,phone;
+    Boolean isChecked;
+    CheckBox private_check;
     Button update;
-    String email, userpass;
+    String email, userpass, Checked;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         username = (EditText)findViewById(R.id.newusername);
         password = (EditText) findViewById(R.id.newpassword);
         phone = (EditText) findViewById(R.id.new_phone_number);
         update = (Button) findViewById(R.id.registerButton);
+        private_check = (CheckBox) findViewById(R.id.pr_check);
         email = UserDetails.useremail;
         Firebase.setAndroidContext(this);
 
@@ -64,6 +68,16 @@ public class UpdateProfile  extends AppCompatActivity {
                             username.setText(obj.getJSONObject(email).getString("name"));
                             phone.setText(obj.getJSONObject(email).getString("phone"));
                             password.setText(obj.getJSONObject(email).getString("password"));
+                            Checked = obj.getJSONObject(email).getString("private");
+                            if(Checked.equals("true")) isChecked = true;
+                            else isChecked = false;
+                            private_check.setChecked(isChecked);
+
+
+
+
+
+
                         }else{
                             Toast.makeText(UpdateProfile.this, "user not found", Toast.LENGTH_LONG).show();
                         }
@@ -105,16 +119,19 @@ public class UpdateProfile  extends AppCompatActivity {
                         } else {
                             try {
                                 String uname = username.getText().toString(),pass = password.getText().toString(),ph=phone.getText().toString();
+                                Boolean a = private_check.isChecked();
                                 JSONObject obj = new JSONObject(response);
                                 System.out.println(email);
                                 if(obj.has(email)){
-                                    System.out.println("We are in!");
-                                            updateUserDetails(uname,pass,ph);
+                                    updateUserDetails(uname,pass,ph);
                                     ref.child(email).child("name").setValue(uname);
                                     ref.child(email).child("password").setValue(pass);
                                     ref.child(email).child("phone").setValue(ph);
+                                    ref.child(email).child("private").setValue(a.toString());
                                     Toast.makeText(UpdateProfile.this, "Updated Profile", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(UpdateProfile.this,ViewProfile.class));
+                                    Intent i = new Intent(UpdateProfile.this,ViewProfile.class);
+                                    i.putExtra("status","0");
+                                    startActivity(i);
                                     finish();
                                 }else{
                                     Toast.makeText(UpdateProfile.this, "user not found", Toast.LENGTH_LONG).show();

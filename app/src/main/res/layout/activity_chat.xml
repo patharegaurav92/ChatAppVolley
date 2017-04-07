@@ -8,9 +8,15 @@
     android:orientation="vertical"
     >
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Profile" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_weight="20"
+        android:layout_weight="18.44"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView">
 

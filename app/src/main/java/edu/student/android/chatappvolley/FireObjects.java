@@ -8,6 +8,10 @@ import com.firebase.client.Firebase;
 
 public class FireObjects {
 
-    static Firebase ref = new Firebase("https://carpoolapp-2ec11.firebaseio.com/users");
-    static String url = "https://carpoolapp-2ec11.firebaseio.com/users.json";
+    public static Firebase ref = new Firebase("https://carpoolapp-2ec11.firebaseio.com/users");
+    public static String url = "https://carpoolapp-2ec11.firebaseio.com/users.json";
+    public static String ownCarpool = "https://carpoolapp-2ec11.firebaseio.com/own.json";
+    public static Firebase ownCarpoolRef = new Firebase("https://carpoolapp-2ec11.firebaseio.com/own");
+    public static String requestCarpool = "https://carpoolapp-2ec11.firebaseio.com/request.json";
+    public static Firebase requestCarpoolRef = new Firebase("https://carpoolapp-2ec11.firebaseio.com/request");
 }

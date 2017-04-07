@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+    android:layout_height="match_parent" >
 
     <TextView
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_height="60dp"
+        android:padding="4dp"
         android:id="@+id/ownacarpool"
-        android:layout_gravity="center_vertical"
+        android:textSize="20dp"
         android:text="Own A Carpool"/>
-    <TextView
+    <!--<TextView
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_height="60dp"
+        android:padding="4dp"
+        android:textSize="20dp"
         android:id="@+id/requestacarpool"
-        android:layout_gravity="center"
-        android:text="Request A Carpool"/>
+
+        android:text="Request A Carpool"/>-->
     <TextView
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_height="60dp"
+        android:padding="4dp"
+        android:textSize="20dp"
         android:id="@+id/chat"
-        android:layout_gravity="center"
+
         android:text="Chat with Existing Users of App"/>
     <TextView
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_height="60dp"
+        android:padding="4dp"
+        android:textSize="20dp"
         android:id="@+id/updateprofile"
-        android:layout_gravity="center"
+
         android:text="Update Profile"/>
+    <TextView
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="4dp"
+        android:textSize="20dp"
+        android:id="@+id/viewcarpool"
+
+        android:text="View Carpool"/>
 </LinearLayout>

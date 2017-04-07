@@ -33,14 +33,15 @@ import static edu.student.android.chatappvolley.FireObjects.url;
 public class Users extends AppCompatActivity{
     ListView usersList;
     TextView noUsersText;
-    ArrayList<String> al = new ArrayList<>();
+    ArrayList<String> al_name = new ArrayList<>();
+    ArrayList<String> al_email= new ArrayList<>();
     int totalUsers = 0;
     ProgressDialog pd;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         usersList = (ListView)findViewById(R.id.usersList);
         noUsersText = (TextView)findViewById(R.id.noUsersText);
         pd = new ProgressDialog(Users.this);
@@ -64,7 +65,8 @@ public class Users extends AppCompatActivity{
         usersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                UserDetails.chatWith = al.get(position);
+                UserDetails.chatWith = al_name.get(position);
+                UserDetails.chatWithEmail = EncodeString(al_email.get(position));
                 startActivity(new Intent(Users.this, Chat.class));
             }
         });
@@ -82,7 +84,8 @@ public class Users extends AppCompatActivity{
                 System.out.println("key :"+key);
                 System.out.println("Current User :"+UserDetails.useremail);
                 if(!key.equals(UserDetails.useremail)) {
-                    al.add(obj.getJSONObject(key).getString("name"));
+                        al_name.add(obj.getJSONObject(key).getString("name"));
+                    al_email.add(obj.getJSONObject(key).getString("email"));
                 }
 
                 totalUsers++;
@@ -99,7 +102,7 @@ public class Users extends AppCompatActivity{
         else{
             noUsersText.setVisibility(View.GONE);
             usersList.setVisibility(View.VISIBLE);
-            usersList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al));
+            usersList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al_name));
         }
 
         pd.dismiss();

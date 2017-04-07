@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     tools:context="edu.student.android.chatappvolley.Register"
     android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
     >
 
     <TextView
@@ -47,6 +49,13 @@
         android:maxLines="1"
         android:hint="enter phone"
         android:layout_marginBottom="10dp"/>
+
+    <CheckBox
+        android:id="@+id/prv_chk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="Private (If checked, people cannot see you)" />
 
     <Button
         android:layout_width="match_parent"

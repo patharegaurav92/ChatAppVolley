@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context="edu.student.android.chatappvolley.Login"
     android:orientation="vertical"
+    android:padding="16dp"
     android:gravity="center">
 
     <TextView

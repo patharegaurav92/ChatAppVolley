@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout"
+        android:visibility="gone">
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            tools:context="com.example.chinmaydeshpande.myapplication123.MapsActivity"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="147dp" />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/date1"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/date1"
+        android:text="Change" />
+
+    <Button
+        android:id="@+id/sourcebuttonloc"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:text="Select Source Location"
+        android:gravity="center"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/selectdest"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:layout_below="@+id/relativeLayout"
+        android:text="Select Destination Location"
+        android:visibility="gone" />
+
+    <AutoCompleteTextView
+        android:id="@+id/source"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="Select Source"
+        android:imeOptions="flagNoExtractUi|actionSearch"
+        android:inputType="textCapSentences" />
+
+
+    <AutoCompleteTextView
+        android:id="@+id/destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/source"
+        android:ems="10"
+        android:imeOptions="flagNoExtractUi|actionSearch"
+        android:inputType="textCapSentences"
+        android:hint="Select Destination" />
+
+    <EditText
+        android:id="@+id/date1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="18dp"
+        android:layout_below="@+id/destination"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/destination"
+        android:gravity="center_vertical"
+        android:text="Date: " />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="24dp"
+        android:text="Submit"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/date1" />
+
+</RelativeLayout>

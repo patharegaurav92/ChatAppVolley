@@ -1,23 +1,40 @@
 package edu.student.android.chatappvolley;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.R.attr.name;
 
 /**
  * Created by Gaurav on 31-03-2017.
@@ -29,19 +46,58 @@ public class Chat extends AppCompatActivity {
     EditText messageArea;
     ScrollView scrollView;
     Firebase reference1, reference2;
+    Button btn;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         layout = (LinearLayout) findViewById(R.id.layout1);
         sendButton = (ImageView) findViewById(R.id.sendButton);
         messageArea = (EditText) findViewById(R.id.messageArea);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
+        btn = (Button) findViewById(R.id.button);
         Firebase.setAndroidContext(this);
+
 
         reference1 = new Firebase("https://carpoolapp-2ec11.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith);
         reference2 = new Firebase("https://carpoolapp-2ec11.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username);
+
+        StringRequest request = new StringRequest(Request.Method.GET, FireObjects.url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    if(obj.has(UserDetails.chatWithEmail)){
+                        if(obj.getJSONObject(UserDetails.chatWithEmail).getString("private").equals("true")){
+                            btn.setVisibility(View.GONE);
+                        }
+                    }else {
+                        Toast.makeText(Chat.this, "user not found", Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue rQueue = Volley.newRequestQueue(Chat.this);
+        rQueue.add(request);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Chat.this,ViewProfile.class);
+                i.putExtra("status","1");
+                startActivity(i);
+            }
+        });
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
